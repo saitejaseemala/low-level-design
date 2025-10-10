@@ -1,0 +1,81 @@
+import entities.ParkingFloor;
+import entities.ParkingSpot;
+import entities.ParkingTicket;
+import strategy.fee.FeeStrategy;
+import strategy.fee.SizeBasedFeeStrategy;
+import strategy.parking.NearestSpotParkingStrategy;
+import strategy.parking.ParkingStrategy;
+import vehicle.Vehicle;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
+
+public class ParkingLot {
+
+    private static ParkingLot instance;
+    private List<ParkingFloor> parkingFloors = new ArrayList<>();
+    private Map<String, ParkingTicket> activeTickets;
+    private FeeStrategy feeStrategy;
+    private ParkingStrategy parkingStrategy;
+
+    private ParkingLot() {
+        this.feeStrategy = new SizeBasedFeeStrategy();
+        this.parkingStrategy = new NearestSpotParkingStrategy();
+        this.activeTickets = new ConcurrentHashMap<>();
+    }
+
+    public static synchronized ParkingLot getInstance() {
+        if (instance == null) {
+            instance = new ParkingLot();
+        }
+        return instance;
+    }
+
+    public void addFloor(ParkingFloor floor) {
+        parkingFloors.add(floor);
+    }
+
+    public void setFeeStrategy (FeeStrategy feeStrategy) {
+        this.feeStrategy = feeStrategy;
+    }
+
+    public void setParkingStrategy(ParkingStrategy parkingStrategy) {
+        this.parkingStrategy = parkingStrategy;
+    }
+
+    public Optional<ParkingTicket> parkVehicle(Vehicle vehicle) {
+        Optional<ParkingSpot> parkingSpot = parkingStrategy.findAvailableParkingSpot(parkingFloors, vehicle);
+
+        if (parkingSpot.isPresent()) {
+            ParkingSpot spot = parkingSpot.get();
+            spot.parkVehicle(vehicle);
+            ParkingTicket ticket = new ParkingTicket(vehicle, spot);
+            activeTickets.put(vehicle.getLicenseNumber(), ticket);
+            System.out.printf("%s parked at %s. Ticket: %s\n", vehicle.getLicenseNumber(), spot.getSpotId(), ticket.getTicketId());
+            return Optional.of(ticket);
+        }
+
+        System.out.println("No available spot for " + vehicle.getLicenseNumber());
+        return Optional.empty();
+    }
+
+
+    public Optional<Double> unParkVehicle(String licenseNumber) {
+        ParkingTicket ticket = activeTickets.remove(licenseNumber);
+        if (ticket == null) {
+            System.out.println("Ticket not found");
+            return Optional.empty();
+        }
+
+        ticket.setExitTime();
+        ticket.getParkingSpot().unParkVehicle();
+        activeTickets.remove(ticket.getTicketId());
+
+        Double parkingFee = feeStrategy.calculateFee(ticket);
+        return Optional.of(parkingFee);
+    }
+
+}
