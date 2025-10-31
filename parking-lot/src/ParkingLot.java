@@ -16,8 +16,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ParkingLot {
 
     private static ParkingLot instance;
-    private List<ParkingFloor> parkingFloors = new ArrayList<>();
-    private Map<String, ParkingTicket> activeTickets;
+    private final List<ParkingFloor> parkingFloors = new ArrayList<>();
+    private final Map<String, ParkingTicket> activeTickets;
     private FeeStrategy feeStrategy;
     private ParkingStrategy parkingStrategy;
 
