@@ -3,7 +3,7 @@ package handlers;
 import enums.LogLevel;
 import lombok.Setter;
 import models.LogMessage;
-import strategies.appenders.LogAppender;
+import appenders.LogAppender;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;

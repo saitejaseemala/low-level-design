@@ -1,4 +1,4 @@
-package strategies.appenders;
+package appenders;
 
 import models.LogMessage;
 

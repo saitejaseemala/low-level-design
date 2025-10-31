@@ -1,8 +1,8 @@
-package strategies.appenders;
+package appenders;
 
 import lombok.RequiredArgsConstructor;
 import models.LogMessage;
-import strategies.formatters.LogFormatter;
+import formatters.LogFormatter;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

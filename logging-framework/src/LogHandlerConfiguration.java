@@ -1,6 +1,6 @@
 import enums.LogLevel;
 import handlers.*;
-import strategies.appenders.LogAppender;
+import appenders.LogAppender;
 
 public class LogHandlerConfiguration {
 

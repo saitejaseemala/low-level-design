@@ -1,8 +1,8 @@
 import enums.LogLevel;
-import strategies.appenders.ConsoleAppender;
-import strategies.appenders.FileAppender;
-import strategies.formatters.JsonFormatter;
-import strategies.formatters.TextFormatter;
+import appenders.ConsoleAppender;
+import appenders.FileAppender;
+import formatters.JsonFormatter;
+import formatters.TextFormatter;
 
 public class LoggerClient {
     public static void main(String[] args) {

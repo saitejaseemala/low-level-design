@@ -1,4 +1,4 @@
-package strategies.formatters;
+package formatters;
 
 import models.LogMessage;
 
