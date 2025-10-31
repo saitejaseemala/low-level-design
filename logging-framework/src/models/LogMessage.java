@@ -1,9 +1,6 @@
 package models;
 
 import enums.LogLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
 import java.time.LocalDateTime;
 
 
