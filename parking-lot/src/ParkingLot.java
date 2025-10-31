@@ -1,10 +1,10 @@
-import entities.ParkingFloor;
-import entities.ParkingSpot;
-import entities.ParkingTicket;
-import strategy.fee.FeeStrategy;
-import strategy.fee.SizeBasedFeeStrategy;
-import strategy.parking.NearestSpotParkingStrategy;
-import strategy.parking.ParkingStrategy;
+import feestrategy.FeeStrategy;
+import feestrategy.SizeBasedFeeStrategy;
+import models.ParkingFloor;
+import models.ParkingSpot;
+import models.ParkingTicket;
+import parkingstrategy.NearestSpotParkingStrategy;
+import parkingstrategy.ParkingStrategy;
 import vehicle.Vehicle;
 
 import java.util.ArrayList;
@@ -38,7 +38,7 @@ public class ParkingLot {
         parkingFloors.add(floor);
     }
 
-    public void setFeeStrategy (FeeStrategy feeStrategy) {
+    public void setFeeStrategy(FeeStrategy feeStrategy) {
         this.feeStrategy = feeStrategy;
     }
 

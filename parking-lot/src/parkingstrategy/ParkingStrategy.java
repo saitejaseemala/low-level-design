@@ -1,7 +1,7 @@
-package strategy.parking;
+package parkingstrategy;
 
-import entities.ParkingFloor;
-import entities.ParkingSpot;
+import models.ParkingFloor;
+import models.ParkingSpot;
 import vehicle.Vehicle;
 
 import java.util.List;

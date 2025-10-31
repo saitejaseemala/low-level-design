@@ -1,8 +1,8 @@
 package vehicle;
 
 public abstract class Vehicle {
-    private String licenseNumber;
-    private VehicleSize vehicleSize;
+    private final String licenseNumber;
+    private final VehicleSize vehicleSize;
 
     public Vehicle(String licenseNumber, VehicleSize vehicleSize) {
         this.licenseNumber = licenseNumber;
@@ -13,15 +13,7 @@ public abstract class Vehicle {
         return licenseNumber;
     }
 
-    public void setLicenseNumber(String licenseNumber) {
-        this.licenseNumber = licenseNumber;
-    }
-
     public VehicleSize getVehicleSize() {
         return vehicleSize;
-    }
-
-    public void setVehicleSize(VehicleSize vehicleSize) {
-        this.vehicleSize = vehicleSize;
     }
 }

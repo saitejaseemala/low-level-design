@@ -1,6 +1,6 @@
-package strategy.fee;
+package feestrategy;
 
-import entities.ParkingTicket;
+import models.ParkingTicket;
 
 public interface FeeStrategy {
     double calculateFee(ParkingTicket ticket);

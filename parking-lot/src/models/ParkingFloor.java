@@ -1,4 +1,4 @@
-package entities;
+package models;
 
 import vehicle.Vehicle;
 import vehicle.VehicleSize;
@@ -11,8 +11,8 @@ import java.util.stream.Collectors;
 
 public class ParkingFloor {
 
-    private Map<String, ParkingSpot> parkingSpots;
-    private int floorNumber;
+    private final Map<String, ParkingSpot> parkingSpots;
+    private final int floorNumber;
 
     public ParkingFloor(int floorNumber) {
         this.floorNumber = floorNumber;

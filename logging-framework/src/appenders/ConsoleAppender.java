@@ -1,7 +1,7 @@
 package appenders;
 
-import models.LogMessage;
 import formatters.LogFormatter;
+import models.LogMessage;
 
 public class ConsoleAppender implements LogAppender {
 

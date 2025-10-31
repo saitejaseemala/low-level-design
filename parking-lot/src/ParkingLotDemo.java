@@ -1,7 +1,7 @@
-import entities.ParkingFloor;
-import entities.ParkingSpot;
-import entities.ParkingTicket;
-import strategy.fee.SizeBasedFeeStrategy;
+import feestrategy.SizeBasedFeeStrategy;
+import models.ParkingFloor;
+import models.ParkingSpot;
+import models.ParkingTicket;
 import vehicle.*;
 
 import java.util.Optional;

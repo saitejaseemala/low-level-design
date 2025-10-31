@@ -1,6 +1,6 @@
-import enums.LogLevel;
 import appenders.ConsoleAppender;
 import appenders.FileAppender;
+import enums.LogLevel;
 import formatters.JsonFormatter;
 import formatters.TextFormatter;
 
